@@ -1,9 +1,24 @@
-package com.example.Restwebservices;
+package com.example.Restwebservices.employee;
+
+import com.sun.istack.NotNull;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
+import java.util.Locale;
 
 public class EmployeeBean {
     private Integer id;
+    @Size(min=2)
     private String name;
+    @NotNull @Min(20)
     private Integer age;
+    protected EmployeeBean(){
+    }
 
     public EmployeeBean(Integer id, String name, Integer age) {
         this.id = id;
@@ -43,4 +58,5 @@ public class EmployeeBean {
                 ", age=" + age +
                 '}';
     }
+
 }
